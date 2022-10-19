@@ -9,13 +9,8 @@ int _printf(const char *format, ...)
 {
 	va_list vl;
 	int i = 0, j = 0;
-	char buff[100] = {0};
-	char *str_arg, c;
+	char buff[100] = {0}, *str_arg, c;
 
-	if (format == NULL)
-	{
-		exit(1);
-	}
 	va_start(vl, format);
 	while (format && format[i])
 	{
@@ -25,7 +20,7 @@ int _printf(const char *format, ...)
 			if (format[i] == '%')
 			{
 				c = '%';
-				write(1, &c , 1);
+				write(1, &c, 1);
 			}
 			else
 			{
@@ -50,15 +45,5 @@ int _printf(const char *format, ...)
 		i++;
 	}
 	fwrite(buff, j, 1, stdout);
-	va_end(vl);
 	return (j);
-}
-int main(void)
-{
-	char *name;
-	char latter;
-	name = "Daniel";
-	latter = 'A';
-	_printf("my name is %s and my latter is %c\n", name, latter);
-	return (0);
 }
